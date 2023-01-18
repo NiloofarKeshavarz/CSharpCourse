@@ -1,0 +1,46 @@
+﻿<Window x:Class="MidtermTravel.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MidtermTravel"
+        mc:Ignorable="d" ResizeMode="NoResize"
+        Title="MainWindow" Height="400" Width="1000">
+    <Grid Height="324" VerticalAlignment="Top" Margin="0,10,0,0">
+
+        <ListView  IsSynchronizedWithCurrentItem="True" Name="LvTrips" SelectionChanged="LvTrips_SelectionChanged" SelectedItem="{Binding SelectedTrip}"  Margin="13,70,331,5"  SelectionMode="Multiple" BorderBrush="#FF8994A7">
+            <ListView.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                </Style>
+            </ListView.Resources>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Destination" Width="100" DisplayMemberBinding="{Binding Destination}" />
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Name}" />
+                    <GridViewColumn Header="Passport No." Width="120"  DisplayMemberBinding="{Binding PassportNumber}" />
+                    <GridViewColumn Header="Departure" Width="130" DisplayMemberBinding="{Binding Departure, StringFormat='\d'}" />
+                    <GridViewColumn Header="Return" Width="130" DisplayMemberBinding="{Binding Return , StringFormat='\d'}" />
+                </GridView>
+            </ListView.View>
+
+        </ListView>
+        <Label Content="Destination" HorizontalAlignment="Left" Margin="688,74,0,0" VerticalAlignment="Top" Width="70" Height="30"/>
+        <TextBox Name="TxbDestination" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="766,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="30" />
+        <Label Content=" Name" HorizontalAlignment="Left" Margin="688,118,0,0" VerticalAlignment="Top" Width="68" Height="30"/>
+        <TextBox Name="TbxName" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="766,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="30" />
+        <Label Content="Passpot No.:" HorizontalAlignment="Left" Margin="688,162,0,0" VerticalAlignment="Top" Width="70" Height="28"/>
+        <TextBox Name="TbxPassort" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="766,162,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="200" Height="29" />
+        <Label Content="Departure:" HorizontalAlignment="Left" Margin="688,204,0,0" VerticalAlignment="Top" Width="66" Height="26"/>
+        <DatePicker Name="DpDeparture" HorizontalAlignment="Left" Margin="766,204,0,0" VerticalAlignment="Top" Width="200" Height="26"/>
+        <Label Content="Return" HorizontalAlignment="Left" Margin="688,242,0,0" VerticalAlignment="Top" Width="66" Height="28" />
+        <DatePicker Name="DpReturn" HorizontalAlignment="Left" Margin="766,244,0,0" VerticalAlignment="Top" Width="200" Height="26"/>
+
+        <Button Name="BtnAdd" Content="Add Trip" HorizontalAlignment="Left" Margin="766,295,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="BtnAdd_Click" />
+        <Button Name="BtnDelete" IsEnabled="{Binding SelectedItems.Count, ElementName=LvTrips}" Content="Delete" HorizontalAlignment="Left" Margin="836,295,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="BtnDelete_Click"/>
+        <Button Name="BtnUpdate" IsEnabled="{Binding SelectedItems.Count, ElementName=LvTrips}" Content="Update" HorizontalAlignment="Left" Margin="906,295,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="BtnUpdate_Click" />
+        <Button Name="BtnSave" Content="Save Selected Trips" HorizontalAlignment="Left" Margin="35,16,0,0" VerticalAlignment="Top" Height="32" Width="150" Click="BtnSave_Click"  />
+        
+       
+    </Grid>
+</Window>
